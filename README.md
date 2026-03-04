@@ -4,7 +4,6 @@ JugaadLang Compiler is a custom-built compiler for **JugaadLang**, a lightweight
 
 This project was built to understand the internal working of compilers and to implement fundamental language processing techniques from scratch.
 
----
 
 ## 🚀 Project Overview
 
@@ -15,10 +14,6 @@ The compiler processes JugaadLang source code through the following stages:
 3. **Semantic Analysis** – Performs validation like type checking and scope resolution  
 4. **Code Generation** – Produces executable output / intermediate representation  
 
----
-
-
----
 
 ## ⚙️ Features
 
@@ -29,7 +24,6 @@ The compiler processes JugaadLang source code through the following stages:
 - Error handling with meaningful messages
 - Sample test programs
 
----
 
 ## 🧰 Prerequisites
 
@@ -39,7 +33,6 @@ Make sure you have the following installed:
 - Appropriate compiler (javac / g++)
 - Build tool (if used: Maven / Gradle / Make)
 
----
 
 ## 🛠️ Installation & Setup
 
@@ -47,7 +40,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/ShahHetanshi/JugaadLang-Compiler.git
-cd JugaadLang-Compile
+cd JugaadLang-Compile```
 
 📈 Future Improvements
 
