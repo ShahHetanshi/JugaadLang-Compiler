@@ -25,15 +25,6 @@ The compiler processes JugaadLang source code through the following stages:
 - Sample test programs
 
 
-## 🧰 Prerequisites
-
-Make sure you have the following installed:
-
-- Java / C++ (depending on implementation)
-- Appropriate compiler (javac / g++)
-- Build tool (if used: Maven / Gradle / Make)
-
-
 ## 🛠️ Installation & Setup
 
 Clone the repository:
