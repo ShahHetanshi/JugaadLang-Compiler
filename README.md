@@ -40,9 +40,10 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/ShahHetanshi/JugaadLang-Compiler.git
-cd JugaadLang-Compile```
+cd JugaadLang-Compiler
 
-📈 Future Improvements
+
+## 📈 Future Improvements
 
 Support for loops and conditionals
 Function definitions
