@@ -41,16 +41,17 @@ Clone the repository:
 ```bash
 git clone https://github.com/ShahHetanshi/JugaadLang-Compiler.git
 cd JugaadLang-Compiler
-
+```
 
 ## 📈 Future Improvements
 
-Support for loops and conditionals
-Function definitions
-Improved error diagnostics
-Optimized code generation
-Better documentation for language grammar
+- Support for loops and conditionals  
+- Function definitions  
+- Improved error diagnostics  
+- Optimized code generation  
+- Better documentation for language grammar  
 
-👩‍💻 Author
-Developed by Hetanshi Shah
+## 👩‍💻 Author
+
+Developed by **Hetanshi Shah**  
 Passionate about compiler design, system programming, and software development.
