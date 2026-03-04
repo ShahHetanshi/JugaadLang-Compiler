@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugaad Lang - Desi Programming Language</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">🚀</div>
+                <div>
+                    <h1>Jugaad Lang</h1>
+                    <div class="tagline">Desi Programming, Global Impact! 🇮🇳</div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-example" onclick="showExamples()">
+                    <span>📚 Examples</span>
+                </button>
+                <button class="btn btn-clear" onclick="clearEditor()">
+                    <span>🗑️ Clear</span>
+                </button>
+                <button class="btn btn-run" id="runBtn" onclick="runCode()">
+                    <span>▶️ Run Code</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="sidebar-icon active">📁</div>
+                <div class="sidebar-icon">🔍</div>
+                <div class="sidebar-icon">🧩</div>
+                <div class="sidebar-icon">⚙️</div>
+            </div>
+
+            <div class="editor-area">
+                <div class="tabs">
+                    <div class="tab active">📄 main.jlp</div>
+                </div>
+                <div class="editor-container">
+                    <div class="line-numbers" id="lineNumbers">1</div>
+                    <textarea class="editor" id="editor" spellcheck="false"></textarea>
+                </div>
+            </div>
+
+            <div class="output-panel">
+                <div class="output-header">
+                    <span>📤 Output</span>
+                    <button class="btn" onclick="clearOutput()">Clear</button>
+                </div>
+                <div class="output-content" id="output">
+                    <div class="output-success">Ready to run your Jugaad code! 🚀</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-bar">
+            <div class="status-item">
+                <span>⚡ Jugaad Lang</span>
+                <span id="lineInfo">Line 1, Col 1</span>
+            </div>
+            <div class="status-item">
+                <div class="spinner" id="spinner"></div>
+                <span class="connection-status">
+                    <span class="status-dot disconnected" id="statusDot"></span>
+                    <span id="status">Connecting...</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="exampleModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeExamples()">&times;</span>
+            <h2>📚 Code Examples</h2>
+
+            <div class="example-item" onclick="loadExample('hello')">
+                <div class="example-title">Hello World</div>
+                <div class="example-desc">Basic print statement</div>
+            </div>
+
+            <div class="example-item" onclick="loadExample('variables')">
+                <div class="example-title">Variables & Operations</div>
+                <div class="example-desc">Learn variables and operations</div>
+            </div>
+
+            <div class="example-item" onclick="loadExample('input')">
+                <div class="example-title">User Input (Interactive)</div>
+                <div class="example-desc">Get input from user - WebSocket enabled!</div>
+            </div>
+
+            <div class="example-item" onclick="loadExample('conditions')">
+                <div class="example-title">If-Else Conditions</div>
+                <div class="example-desc">Conditional statements</div>
+            </div>
+
+            <div class="example-item" onclick="loadExample('loops')">
+                <div class="example-title">Loops</div>
+                <div class="example-desc">For and while loops</div>
+            </div>
+
+            <div class="example-item" onclick="loadExample('functions')">
+                <div class="example-title">Functions</div>
+                <div class="example-desc">Create and use functions</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const editor = document.getElementById('editor');
+        const lineNumbers = document.getElementById('lineNumbers');
+        const output = document.getElementById('output');
+        const spinner = document.getElementById('spinner');
+        const statusText = document.getElementById('status');
+        const statusDot = document.getElementById('statusDot');
+        const lineInfo = document.getElementById('lineInfo');
+        const runBtn = document.getElementById('runBtn');
+
+        let ws = null;
+        let isRunning = false;
+        let currentInputCallback = null;
+
+        // Connect to WebSocket
+        function connectWebSocket() {
+            ws = new WebSocket('ws://localhost:3000');
+
+            ws.onopen = () => {
+                console.log('✅ Connected to server');
+                statusText.textContent = 'Connected';
+                statusDot.classList.remove('disconnected');
+            };
+
+            ws.onmessage = (event) => {
+                const message = JSON.parse(event.data);
+
+                if (message.type === 'output') {
+                    addOutput(message.data, 'normal');
+                } else if (message.type === 'error') {
+                    addOutput(`❌ Error: ${message.message}`, 'error');
+                    spinner.classList.remove('active');
+                    isRunning = false;
+                    runBtn.disabled = false;
+                } else if (message.type === 'done') {
+                    addOutput('\n✅ Code executed successfully!', 'success');
+                    spinner.classList.remove('active');
+                    isRunning = false;
+                    runBtn.disabled = false;
+                } else if (message.type === 'input_request') {
+                    promptUserInput(message.variable);
+                }
+            };
+
+            ws.onerror = (error) => {
+                console.error('❌ WebSocket error:', error);
+                statusText.textContent = 'Error';
+                statusDot.classList.add('disconnected');
+            };
+
+            ws.onclose = () => {
+                console.log('🔌 Disconnected from server');
+                statusText.textContent = 'Disconnected';
+                statusDot.classList.add('disconnected');
+                setTimeout(connectWebSocket, 2000);
+            };
+        }
+
+        // Initialize WebSocket connection
+        connectWebSocket();
+
+        function updateLineNumbers() {
+            const lines = editor.value.split('\n').length;
+            const numbers = [];
+            for (let i = 1; i <= lines; i++) {
+                numbers.push(i);
+            }
+            lineNumbers.textContent = numbers.join('\n');
+        }
+
+        function updateCursorPosition() {
+            const cursorPos = editor.selectionStart;
+            const textBeforeCursor = editor.value.substring(0, cursorPos);
+            const line = textBeforeCursor.split('\n').length;
+            const col = textBeforeCursor.split('\n').pop().length + 1;
+            lineInfo.textContent = `Line ${line}, Col ${col}`;
+        }
+
+        editor.addEventListener('input', updateLineNumbers);
+        editor.addEventListener('keyup', updateCursorPosition);
+        editor.addEventListener('click', updateCursorPosition);
+
+        editor.addEventListener('scroll', () => {
+            lineNumbers.scrollTop = editor.scrollTop;
+        });
+
+        editor.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const start = editor.selectionStart;
+                const end = editor.selectionEnd;
+                editor.value = editor.value.substring(0, start) + '  ' + editor.value.substring(end);
+                editor.selectionStart = editor.selectionEnd = start + 2;
+                updateLineNumbers();
+            }
+        });
+
+        function runCode() {
+            const code = editor.value.trim();
+
+            if (!code) {
+                addOutput('⚠️ No code to run!', 'error');
+                return;
+            }
+
+            if (isRunning) {
+                addOutput('⚠️ Code is already running!', 'error');
+                return;
+            }
+
+            if (!ws || ws.readyState !== WebSocket.OPEN) {
+                addOutput('❌ Not connected to server!', 'error');
+                addOutput('💡 Make sure the server is running: node server.js', 'error');
+                return;
+            }
+
+            isRunning = true;
+            runBtn.disabled = true;
+            clearOutput();
+            addOutput('🔄 Compiling and running your code...', 'success');
+            spinner.classList.add('active');
+
+            ws.send(JSON.stringify({ type: 'execute', code: code }));
+        }
+
+        function promptUserInput(variableName) {
+            const inputContainer = document.createElement('div');
+            inputContainer.className = 'input-container';
+            inputContainer.innerHTML = `
+                <span class="input-prompt">Enter value for ${variableName}:</span>
+                <input type="text" class="user-input" id="userInputField" />
+                <button class="input-submit" onclick="submitInput()">Submit</button>
+            `;
+
+            output.appendChild(inputContainer);
+            output.scrollTop = output.scrollHeight;
+
+            setTimeout(() => {
+                const inputField = document.getElementById('userInputField');
+                inputField.focus();
+
+                inputField.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        submitInput();
+                    }
+                });
+            }, 100);
+        }
+
+        function submitInput() {
+            const inputField = document.getElementById('userInputField');
+            if (!inputField) return;
+
+            const value = inputField.value;
+
+            addOutput(`> ${value}`, 'input');
+
+            const inputContainer = inputField.closest('.input-container');
+            if (inputContainer) {
+                inputContainer.remove();
+            }
+
+            ws.send(JSON.stringify({ type: 'input_response', value: value }));
+        }
+
+        function addOutput(text, type = 'normal') {
+            const line = document.createElement('div');
+            line.className = `output-line ${type === 'error' ? 'output-error' : type === 'success' ? 'output-success' : type === 'input' ? 'output-input' : ''}`;
+            line.textContent = text;
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        function clearOutput() {
+            output.innerHTML = '';
+        }
+
+        function clearEditor() {
+            if (confirm('Clear all code? This cannot be undone.')) {
+                editor.value = '';
+                updateLineNumbers();
+                clearOutput();
+                addOutput('Editor cleared!', 'success');
+            }
+        }
+
+        function showExamples() {
+            document.getElementById('exampleModal').classList.add('active');
+        }
+
+        function closeExamples() {
+            document.getElementById('exampleModal').classList.remove('active');
+        }
+
+        function loadExample(type) {
+            const examples = {
+                hello: `// Hello World in Jugaad Lang
+bol bhai "Namaste, World! 🙏"
+bol bhai "Welcome to Jugaad Lang!"`,
+
+                variables: `// Variables and Operations
+bhai ye hai name = "Rahul"
+bhai ye hai age = 25
+bhai ye hai salary = 50000
+
+bol bhai "Name: "
+bol bhai name
+bol bhai "Age: "
+bol bhai age
+
+// Arithmetic
+bhai ye hai bonus = salary * 0.1
+bhai ye hai total = salary + bonus
+bol bhai "Total with bonus: "
+bol bhai total`,
+
+                input: `// Interactive User Input
+bol bhai "=== User Input Demo ==="
+bol bhai "What is your name?"
+
+sunao bhai name
+bol bhai "Hello, "
+bol bhai name
+bol bhai "!"
+
+bol bhai "How old are you?"
+sunao bhai age
+bol bhai "You are "
+bol bhai age
+bol bhai " years old"`,
+
+                conditions: `// If-Else Conditions
+bhai ye hai marks = 85
+
+agar bhai (marks >= 90) {
+  bol bhai "Grade: A+"
+} nahi to bhai {
+  agar bhai (marks >= 80) {
+    bol bhai "Grade: A"
+  } nahi to bhai {
+    agar bhai (marks >= 70) {
+      bol bhai "Grade: B"
+    } nahi to bhai {
+      bol bhai "Grade: C"
+    }
+  }
+}`,
+
+                loops: `// Loops Example
+bol bhai "=== Counting 1 to 5 ==="
+ke liye bhai (bhai ye hai i = 1; i <= 5; i = i + 1) {
+  bol bhai i
+}
+
+bol bhai "=== While Loop ==="
+bhai ye hai count = 1
+jab tak bhai (count <= 3) {
+  bol bhai count
+  count = count + 1
+}`,
+
+                functions: `// Functions
+function bhai greet(name) {
+  bol bhai "Hello, "
+  bol bhai name
+  bol bhai "!"
+}
+
+function bhai add(a, b) {
+  return bhai a + b
+}
+
+// Call functions
+greet("Priya")
+greet("Arjun")
+
+bhai ye hai result = add(10, 20)
+bol bhai "10 + 20 = "
+bol bhai result`
+            };
+
+            editor.value = examples[type] || '';
+            updateLineNumbers();
+            closeExamples();
+            addOutput(`📖 Loaded example: ${type}`, 'success');
+        }
+
+        // Initialize
+        updateLineNumbers();
+        updateCursorPosition();
+
+        // Load default example
+        editor.value = `// Welcome to Jugaad Lang! 🚀
+// A Desi programming language
+
+bol bhai "=== Jugaad Lang Demo ==="
+bol bhai "Namaste, Developer! 🙏"
+
+bhai ye hai name = "Coder"
+bhai ye hai version = 1.0
+
+bol bhai "Version: "
+bol bhai version
+bol bhai "Happy coding!"
+
+// Try interactive input:
+// Uncomment these lines:
+// sunao bhai username
+// bol bhai "Welcome, "
+// bol bhai username`;
+        updateLineNumbers();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+// ==========================================
+// FUNCTIONS Examples
+// ==========================================
+
+bol bhai "=== Simple Function ==="
+
+function bhai greet(name) {
+  bol bhai "Hello, " + name + "!"
+}
+
+greet("Raj")
+greet("Priya")
+
+bol bhai "\n=== Function with Return Value ==="
+
+function bhai add(a, b) {
+  return bhai a + b
+}
+
+bhai ye hai sum = add(10, 20)
+bol bhai "10 + 20 = " + sum
+
+bol bhai "\n=== Factorial Function (Recursive) ==="
+
+function bhai factorial(n) {
+  agar bhai (n <= 1) {
+    return bhai 1
+  }
+  return bhai n * factorial(n - 1)
+}
+
+bol bhai "Factorial of 5: " + factorial(5)
+bol bhai "Factorial of 6: " + factorial(6)
+bol bhai "Factorial of 7: " + factorial(7)
+
+bol bhai "\n=== Fibonacci Function (Recursive) =

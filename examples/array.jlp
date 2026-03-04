@@ -1,0 +1,218 @@
+// ==========================================
+// ARRAYS Examples (Fixed)
+// ==========================================
+
+bol bhai "=== Creating and Accessing Arrays ===\n"
+
+bhai ye hai numbers = [10, 20, 30, 40, 50]
+bol bhai "Array: [10, 20, 30, 40, 50]"
+bol bhai "First element: " + numbers[0]
+bol bhai "Third element: " + numbers[2]
+bol bhai "Last element: " + numbers[4]
+
+bol bhai "\n=== Modifying Array Elements ===\n"
+
+numbers[0] = 100
+numbers[2] = 300
+bol bhai "After modification:"
+bol bhai "numbers[0] = " + numbers[0]
+bol bhai "numbers[2] = " + numbers[2]
+
+bol bhai "\n=== Array of Strings ===\n"
+
+bhai ye hai names = ["Alice", "Bob", "Charlie", "David"]
+bol bhai "Names array:"
+ke liye bhai (bhai ye hai i = 0; i < 4; i += 1) {
+  bol bhai i + ": " + names[i]
+}
+
+bol bhai "\n=== Array Traversal ===\n"
+
+bhai ye hai scores = [95, 87, 92, 78, 88]
+bol bhai "Student Scores:"
+ke liye bhai (bhai ye hai i = 0; i < 5; i += 1) {
+  bol bhai "Student " + (i + 1) + ": " + scores[i]
+}
+
+bol bhai "\n=== Calculating Array Sum ===\n"
+
+bhai ye hai data = [5, 10, 15, 20, 25]
+bhai ye hai sum = 0
+
+ke liye bhai (bhai ye hai i = 0; i < 5; i += 1) {
+  sum += data[i]
+}
+
+bol bhai "Array: [5, 10, 15, 20, 25]"
+bol bhai "Sum: " + sum
+bol bhai "Average: " + (sum / 5)
+
+bol bhai "\n=== Finding Maximum in Array ===\n"
+
+bhai ye hai values = [45, 23, 67, 12, 89, 34, 56]
+bhai ye hai max = values[0]
+bhai ye hai maxIndex = 0
+
+ke liye bhai (bhai ye hai i = 1; i < 7; i += 1) {
+  agar bhai (values[i] > max) {
+    max = values[i]
+    maxIndex = i
+  }
+}
+
+bol bhai "Array: [45, 23, 67, 12, 89, 34, 56]"
+bol bhai "Maximum value: " + max
+bol bhai "Found at index: " + maxIndex
+
+bol bhai "\n=== Finding Minimum in Array ===\n"
+
+bhai ye hai nums = [45, 23, 67, 12, 89, 34, 56]
+bhai ye hai min = nums[0]
+bhai ye hai minIndex = 0
+
+ke liye bhai (bhai ye hai i = 1; i < 7; i += 1) {
+  agar bhai (nums[i] < min) {
+    min = nums[i]
+    minIndex = i
+  }
+}
+
+bol bhai "Minimum value: " + min
+bol bhai "Found at index: " + minIndex
+
+bol bhai "\n=== Reversing an Array ===\n"
+
+bhai ye hai original = [1, 2, 3, 4, 5]
+bhai ye hai reversed = [0, 0, 0, 0, 0]
+
+ke liye bhai (bhai ye hai i = 0; i < 5; i += 1) {
+  reversed[i] = original[4 - i]
+}
+
+bol bhai "Original: [1, 2, 3, 4, 5]"
+bol bhai "Reversed: [" + reversed[0] + ", " + reversed[1] + ", " + reversed[2] + ", " + reversed[3] + ", " + reversed[4] + "]"
+
+bol bhai "\n=== Counting Occurrences ===\n"
+
+bhai ye hai elements = [1, 2, 3, 2, 4, 2, 5]
+bhai ye hai target = 2
+bhai ye hai count = 0
+
+ke liye bhai (bhai ye hai i = 0; i < 7; i += 1) {
+  agar bhai (elements[i] == target) {
+    count += 1
+  }
+}
+
+bol bhai "Array: [1, 2, 3, 2, 4, 2, 5]"
+bol bhai "Count of " + target + ": " + count
+
+bol bhai "\n=== Linear Search ===\n"
+
+bhai ye hai searchArray = [10, 25, 30, 45, 50, 65]
+bhai ye hai searchKey = 45
+bhai ye hai found = false
+bhai ye hai foundAt = -1
+
+ke liye bhai (bhai ye hai i = 0; i < 6; i += 1) {
+  agar bhai (searchArray[i] == searchKey) {
+    found = true
+    foundAt = i
+    break
+  }
+}
+
+agar bhai (found) {
+  bol bhai "Element " + searchKey + " found at index " + foundAt
+} nahi to bhai {
+  bol bhai "Element not found"
+}
+
+bol bhai "\n=== Copying an Array ===\n"
+
+bhai ye hai source = [11, 22, 33, 44, 55]
+bhai ye hai destination = [0, 0, 0, 0, 0]
+
+ke liye bhai (bhai ye hai i = 0; i < 5; i += 1) {
+  destination[i] = source[i]
+}
+
+bol bhai "Source: [11, 22, 33, 44, 55]"
+bol bhai "Destination: [" + destination[0] + ", " + destination[1] + ", " + destination[2] + ", " + destination[3] + ", " + destination[4] + "]"
+
+bol bhai "\n=== Array of Mixed Types ===\n"
+
+bhai ye hai mixed = [100, "Hello", 3.14, true]
+bol bhai "Mixed array elements:"
+bol bhai "Index 0: " + mixed[0]
+bol bhai "Index 1: " + mixed[1]
+bol bhai "Index 2: " + mixed[2]
+bol bhai "Index 3: " + mixed[3]
+
+bol bhai "\n=== Bubble Sort (Simple) ===\n"
+
+bhai ye hai unsorted = [64, 34, 25, 12, 22, 11, 90]
+bhai ye hai n = 7
+
+bol bhai "Before sorting: [64, 34, 25, 12, 22, 11, 90]"
+
+ke liye bhai (bhai ye hai i = 0; i < n - 1; i += 1) {
+  ke liye bhai (bhai ye hai j = 0; j < n - i - 1; j += 1) {
+    agar bhai (unsorted[j] > unsorted[j + 1]) {
+      bhai ye hai temp = unsorted[j]
+      unsorted[j] = unsorted[j + 1]
+      unsorted[j + 1] = temp
+    }
+  }
+}
+
+bol bhai "After sorting: [" + unsorted[0] + ", " + unsorted[1] + ", " + unsorted[2] + ", " + unsorted[3] + ", " + unsorted[4] + ", " + unsorted[5] + ", " + unsorted[6] + "]"
+
+bol bhai "\n=== 2D Array (Matrix) ===\n"
+
+bhai ye hai matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
+
+bol bhai "Matrix 3x3:"
+ke liye bhai (bhai ye hai i = 0; i < 3; i += 1) {
+  bhai ye hai row = ""
+  ke liye bhai (bhai ye hai j = 0; j < 3; j += 1) {
+    row = row + matrix[i][j] + " "
+  }
+  bol bhai row
+}
+
+bol bhai "\n=== Matrix Addition ===\n"
+
+bhai ye hai mat1 = [
+  [1, 2, 3],
+  [4, 5, 6]
+]
+
+bhai ye hai mat2 = [
+  [7, 8, 9],
+  [10, 11, 12]
+]
+
+bhai ye hai result = [
+  [0, 0, 0],
+  [0, 0, 0]
+]
+
+ke liye bhai (bhai ye hai i = 0; i < 2; i += 1) {
+  ke liye bhai (bhai ye hai j = 0; j < 3; j += 1) {
+    result[i][j] = mat1[i][j] + mat2[i][j]
+  }
+}
+
+bol bhai "Result of matrix addition:"
+ke liye bhai (bhai ye hai i = 0; i < 2; i += 1) {
+  bhai ye hai row = ""
+  ke liye bhai (bhai ye hai j = 0; j < 3; j += 1) {
+    row = row + result[i][j] + " "
+  }
+  bol bhai row
+}

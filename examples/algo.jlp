@@ -1,0 +1,296 @@
+// ==========================================
+// ALGORITHMS Examples
+// ==========================================
+
+bol bhai "=== Binary Search ==="
+
+bhai ye hai sortedArr = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+bhai ye hai target = 50
+bhai ye hai left = 0
+bhai ye hai right = 8
+bhai ye hai found = false
+bhai ye hai position = -1
+
+jab tak bhai (left <= right) {
+  bhai ye hai mid = (left + right) / 2
+  bhai ye hai remainder = mid % 1
+  mid = mid - remainder
+  
+  agar bhai (sortedArr[mid] == target) {
+    found = true
+    position = mid
+    break
+  } nahi to bhai {
+    agar bhai (sortedArr[mid] < target) {
+      left = mid + 1
+    } nahi to bhai {
+      right = mid - 1
+    }
+  }
+}
+
+agar bhai (found) {
+  bol bhai "Element " + target + " found at index " + position
+} nahi to bhai {
+  bol bhai "Element not found"
+}
+
+bol bhai "\n=== Selection Sort ==="
+
+bhai ye hai arrToSort = [64, 25, 12, 22, 11]
+bhai ye hai n = 5
+
+bol bhai "Before sorting: [64, 25, 12, 22, 11]"
+
+ke liye bhai (bhai ye hai i = 0; i < n - 1; i += 1) {
+  bhai ye hai minIdx = i
+  
+  ke liye bhai (bhai ye hai j = i + 1; j < n; j += 1) {
+    agar bhai (arrToSort[j] < arrToSort[minIdx]) {
+      minIdx = j
+    }
+  }
+  
+  bhai ye hai temp = arrToSort[minIdx]
+  arrToSort[minIdx] = arrToSort[i]
+  arrToSort[i] = temp
+}
+
+bol bhai "After sorting: [" + arrToSort[0] + ", " + arrToSort[1] + ", " + arrToSort[2] + ", " + arrToSort[3] + ", " + arrToSort[4] + "]"
+
+bol bhai "\n=== Palindrome Check ==="
+
+function bhai isPalindrome(num) {
+  bhai ye hai original = num
+  bhai ye hai reversed = 0
+  
+  jab tak bhai (num > 0) {
+    bhai ye hai digit = num % 10
+    reversed = reversed * 10 + digit
+    num = (num - digit) / 10
+  }
+  
+  agar bhai (original == reversed) {
+    return bhai true
+  }
+  return bhai false
+}
+
+bhai ye hai testNum1 = 121
+bhai ye hai testNum2 = 123
+
+bol bhai testNum1 + " is palindrome: " + isPalindrome(testNum1)
+bol bhai testNum2 + " is palindrome: " + isPalindrome(testNum2)
+
+bol bhai "\n=== Armstrong Number ==="
+
+function bhai isArmstrong(num) {
+  bhai ye hai original = num
+  bhai ye hai sum = 0
+  bhai ye hai digits = 0
+  
+  bhai ye hai temp = num
+  jab tak bhai (temp > 0) {
+    digits += 1
+    temp = (temp - (temp % 10)) / 10
+  }
+  
+  temp = num
+  jab tak bhai (temp > 0) {
+    bhai ye hai digit = temp % 10
+    bhai ye hai power = 1
+    
+    ke liye bhai (bhai ye hai i = 0; i < digits; i += 1) {
+      power = power * digit
+    }
+    
+    sum += power
+    temp = (temp - digit) / 10
+  }
+  
+  agar bhai (original == sum) {
+    return bhai true
+  }
+  return bhai false
+}
+
+bol bhai "153 is Armstrong: " + isArmstrong(153)
+bol bhai "370 is Armstrong: " + isArmstrong(370)
+bol bhai "123 is Armstrong: " + isArmstrong(123)
+
+bol bhai "\n=== Reverse a Number ==="
+
+function bhai reverseNumber(num) {
+  bhai ye hai reversed = 0
+  
+  jab tak bhai (num > 0) {
+    bhai ye hai digit = num % 10
+    reversed = reversed * 10 + digit
+    num = (num - digit) / 10
+  }
+  
+  return bhai reversed
+}
+
+bol bhai "Reverse of 12345: " + reverseNumber(12345)
+bol bhai "Reverse of 9876: " + reverseNumber(9876)
+
+bol bhai "\n=== Sum of Digits ==="
+
+function bhai sumOfDigits(num) {
+  bhai ye hai sum = 0
+  
+  jab tak bhai (num > 0) {
+    sum += num % 10
+    num = (num - (num % 10)) / 10
+  }
+  
+  return bhai sum
+}
+
+bol bhai "Sum of digits of 12345: " + sumOfDigits(12345)
+bol bhai "Sum of digits of 999: " + sumOfDigits(999)
+
+bol bhai "\n=== LCM (Least Common Multiple) ==="
+
+function bhai gcd(a, b) {
+  jab tak bhai (b != 0) {
+    bhai ye hai temp = b
+    b = a % b
+    a = temp
+  }
+  return bhai a
+}
+
+function bhai lcm(a, b) {
+  return bhai (a * b) / gcd(a, b)
+}
+
+bol bhai "LCM(12, 18) = " + lcm(12, 18)
+bol bhai "LCM(15, 25) = " + lcm(15, 25)
+
+bol bhai "\n=== Count Prime Numbers in Range ==="
+
+function bhai countPrimes(start, end) {
+  bhai ye hai count = 0
+  
+  ke liye bhai (bhai ye hai num = start; num <= end; num += 1) {
+    agar bhai (num < 2) {
+      continue
+    }
+    
+    bhai ye hai isPrime = true
+    ke liye bhai (bhai ye hai i = 2; i * i <= num; i += 1) {
+      agar bhai (num % i == 0) {
+        isPrime = false
+        break
+      }
+    }
+    
+    agar bhai (isPrime) {
+      count += 1
+    }
+  }
+  
+  return bhai count
+}
+
+bol bhai "Prime numbers between 1-50: " + countPrimes(1, 50)
+bol bhai "Prime numbers between 50-100: " + countPrimes(50, 100)
+
+bol bhai "\n=== Perfect Number Check ==="
+
+function bhai isPerfect(num) {
+  bhai ye hai sum = 0
+  
+  ke liye bhai (bhai ye hai i = 1; i < num; i += 1) {
+    agar bhai (num % i == 0) {
+      sum += i
+    }
+  }
+  
+  return bhai sum == num
+}
+
+bol bhai "6 is perfect: " + isPerfect(6)
+bol bhai "28 is perfect: " + isPerfect(28)
+bol bhai "12 is perfect: " + isPerfect(12)
+
+bol bhai "\n=== Insertion Sort ==="
+
+bhai ye hai insertArr = [12, 11, 13, 5, 6]
+bhai ye hai size = 5
+
+bol bhai "Before insertion sort: [12, 11, 13, 5, 6]"
+
+ke liye bhai (bhai ye hai i = 1; i < size; i += 1) {
+  bhai ye hai key = insertArr[i]
+  bhai ye hai j = i - 1
+  
+  jab tak bhai (j >= 0 && insertArr[j] > key) {
+    insertArr[j + 1] = insertArr[j]
+    j = j - 1
+  }
+  insertArr[j + 1] = key
+}
+
+bol bhai "After insertion sort: [" + insertArr[0] + ", " + insertArr[1] + ", " + insertArr[2] + ", " + insertArr[3] + ", " + insertArr[4] + "]"
+
+bol bhai "\n=== Finding Second Largest ==="
+
+function bhai findSecondLargest(arr, len) {
+  bhai ye hai first = arr[0]
+  bhai ye hai second = -999999
+  
+  ke liye bhai (bhai ye hai i = 1; i < len; i += 1) {
+    agar bhai (arr[i] > first) {
+      second = first
+      first = arr[i]
+    } nahi to bhai {
+      agar bhai (arr[i] > second && arr[i] != first) {
+        second = arr[i]
+      }
+    }
+  }
+  
+  return bhai second
+}
+
+bhai ye hai testArr = [12, 35, 1, 10, 34, 1]
+bol bhai "Array: [12, 35, 1, 10, 34, 1]"
+bol bhai "Second largest: " + findSecondLargest(testArr, 6)
+
+bol bhai "\n=== Matrix Multiplication ==="
+
+bhai ye hai mat1 = [
+  [1, 2],
+  [3, 4]
+]
+
+bhai ye hai mat2 = [
+  [5, 6],
+  [7, 8]
+]
+
+bhai ye hai result = [
+  [0, 0],
+  [0, 0]
+]
+
+ke liye bhai (bhai ye hai i = 0; i < 2; i += 1) {
+  ke liye bhai (bhai ye hai j = 0; j < 2; j += 1) {
+    result[i][j] = 0
+    ke liye bhai (bhai ye hai k = 0; k < 2; k += 1) {
+      result[i][j] += mat1[i][k] * mat2[k][j]
+    }
+  }
+}
+
+bol bhai "Matrix multiplication result:"
+ke liye bhai (bhai ye hai i = 0; i < 2; i += 1) {
+  bhai ye hai row = ""
+  ke liye bhai (bhai ye hai j = 0; j < 2; j += 1) {
+    row = row + result[i][j] + " "
+  }
+  bol bhai row
+}

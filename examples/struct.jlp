@@ -1,0 +1,175 @@
+// ==========================================
+// STRUCTS (Lightweight Data Structures)
+// ==========================================
+
+bol bhai "=== Basic Struct - Point ==="
+
+struct bhai Point {
+  bhai ye hai x = 0
+  bhai ye hai y = 0
+}
+
+bhai ye hai p1 = new bhai Point(10, 20)
+bhai ye hai p2 = new bhai Point(15, 25)
+
+bol bhai "Point 1: (" + p1.x + ", " + p1.y + ")"
+bol bhai "Point 2: (" + p2.x + ", " + p2.y + ")"
+
+// Calculate distance between two points
+bhai ye hai dx = p2.x - p1.x
+bhai ye hai dy = p2.y - p1.y
+bhai ye hai distance = ((dx ** 2) + (dy ** 2)) ** 0.5
+bol bhai "Distance between points: " + distance
+
+bol bhai "\n=== Struct - Rectangle ==="
+
+struct bhai Rectangle {
+  bhai ye hai width = 0
+  bhai ye hai height = 0
+}
+
+bhai ye hai rect1 = new bhai Rectangle(10, 5)
+bhai ye hai area = rect1.width * rect1.height
+bhai ye hai perimeter = 2 * (rect1.width + rect1.height)
+
+bol bhai "Rectangle dimensions: " + rect1.width + " x " + rect1.height
+bol bhai "Area: " + area
+bol bhai "Perimeter: " + perimeter
+
+bol bhai "\n=== Struct - Student Record ==="
+
+struct bhai StudentRecord {
+  bhai ye hai name = ""
+  bhai ye hai rollNo = 0
+  bhai ye hai marks = 0
+  bhai ye hai grade = ""
+}
+
+bhai ye hai student1 = new bhai StudentRecord("Alice", 101, 95, "A")
+bhai ye hai student2 = new bhai StudentRecord("Bob", 102, 87, "B")
+bhai ye hai student3 = new bhai StudentRecord("Charlie", 103, 92, "A")
+
+bol bhai "Student 1: " + student1.name + ", Roll: " + student1.rollNo + ", Marks: " + student1.marks + ", Grade: " + student1.grade
+bol bhai "Student 2: " + student2.name + ", Roll: " + student2.rollNo + ", Marks: " + student2.marks + ", Grade: " + student2.grade
+bol bhai "Student 3: " + student3.name + ", Roll: " + student3.rollNo + ", Marks: " + student3.marks + ", Grade: " + student3.grade
+
+bol bhai "\n=== Struct - Employee ==="
+
+struct bhai Employee {
+  bhai ye hai id = 0
+  bhai ye hai name = ""
+  bhai ye hai salary = 0
+  bhai ye hai department = ""
+}
+
+bhai ye hai emp1 = new bhai Employee(1001, "Raj", 50000, "IT")
+bhai ye hai emp2 = new bhai Employee(1002, "Priya", 55000, "HR")
+bhai ye hai emp3 = new bhai Employee(1003, "Amit", 60000, "Finance")
+
+bol bhai "=== Employee Records ==="
+bol bhai emp1.name + " (ID: " + emp1.id + ") - " + emp1.department + " - Rs." + emp1.salary
+bol bhai emp2.name + " (ID: " + emp2.id + ") - " + emp2.department + " - Rs." + emp2.salary
+bol bhai emp3.name + " (ID: " + emp3.id + ") - " + emp3.department + " - Rs." + emp3.salary
+
+bhai ye hai totalSalary = emp1.salary + emp2.salary + emp3.salary
+bol bhai "Total Salary Budget: Rs." + totalSalary
+
+bol bhai "\n=== Struct - Circle ==="
+
+struct bhai Circle {
+  bhai ye hai radius = 0
+  bhai ye hai centerX = 0
+  bhai ye hai centerY = 0
+}
+
+bhai ye hai circle = new bhai Circle(5, 10, 15)
+bhai ye hai pi = 3.14159
+bhai ye hai circleArea = pi * (circle.radius ** 2)
+bhai ye hai circumference = 2 * pi * circle.radius
+
+bol bhai "Circle at (" + circle.centerX + ", " + circle.centerY + ")"
+bol bhai "Radius: " + circle.radius
+bol bhai "Area: " + circleArea
+bol bhai "Circumference: " + circumference
+
+bol bhai "\n=== Struct Array ==="
+
+struct bhai Product {
+  bhai ye hai id = 0
+  bhai ye hai name = ""
+  bhai ye hai price = 0
+  bhai ye hai quantity = 0
+}
+
+bhai ye hai products = [
+  new bhai Product(1, "Laptop", 50000, 10),
+  new bhai Product(2, "Mouse", 500, 50),
+  new bhai Product(3, "Keyboard", 1500, 30)
+]
+
+bol bhai "=== Product Inventory ==="
+bhai ye hai totalValue = 0
+
+ke liye bhai (bhai ye hai i = 0; i < 3; i += 1) {
+  bhai ye hai product = products[i]
+  bhai ye hai value = product.price * product.quantity
+  totalValue += value
+  bol bhai product.name + " (ID: " + product.id + ") - Rs." + product.price + " x " + product.quantity + " = Rs." + value
+}
+
+bol bhai "Total Inventory Value: Rs." + totalValue
+
+bol bhai "\n=== Modifying Struct Properties ==="
+
+struct bhai Config {
+  bhai ye hai host = "localhost"
+  bhai ye hai port = 8080
+  bhai ye hai debug = true
+}
+
+bhai ye hai config = new bhai Config("192.168.1.1", 3000, false)
+bol bhai "Initial Config:"
+bol bhai "Host: " + config.host
+bol bhai "Port: " + config.port
+bol bhai "Debug: " + config.debug
+
+// Modify properties
+config.port = 5000
+config.debug = true
+
+bol bhai "\nUpdated Config:"
+bol bhai "Host: " + config.host
+bol bhai "Port: " + config.port
+bol bhai "Debug: " + config.debug
+
+bol bhai "\n=== Struct - Date ==="
+
+struct bhai Date {
+  bhai ye hai day = 1
+  bhai ye hai month = 1
+  bhai ye hai year = 2000
+}
+
+bhai ye hai today = new bhai Date(7, 10, 2025)
+bol bhai "Today's Date: " + today.day + "/" + today.month + "/" + today.year
+
+bol bhai "\n=== Nested Struct-like Behavior ==="
+
+struct bhai Address {
+  bhai ye hai street = ""
+  bhai ye hai city = ""
+  bhai ye hai pincode = 0
+}
+
+struct bhai Person {
+  bhai ye hai name = ""
+  bhai ye hai age = 0
+  bhai ye hai email = ""
+}
+
+bhai ye hai address = new bhai Address("MG Road", "Mumbai", 400001)
+bhai ye hai person = new bhai Person("Rohan", 30, "rohan@example.com")
+
+bol bhai "Person: " + person.name + ", Age: " + person.age
+bol bhai "Email: " + person.email
+bol bhai "Address: " + address.street + ", " + address.city + " - " + address.pincode

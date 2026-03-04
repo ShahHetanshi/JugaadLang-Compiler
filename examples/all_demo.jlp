@@ -1,0 +1,275 @@
+// ==========================================
+// COMPREHENSIVE DEMO - All Features Combined
+// ==========================================
+
+bol bhai "=== JugaadLang++ Comprehensive Demo ==="
+bol bhai "Demonstrating all language features\n"
+
+// ========== Variables ==========
+bol bhai "1. VARIABLES"
+bhai ye hai name = "JugaadLang"
+bhai ye hai version = 1.0
+bhai ye hai isAwesome = true
+bol bhai "Language: " + name + " v" + version
+
+// ========== Arithmetic Operations ==========
+bol bhai "\n2. ARITHMETIC OPERATIONS"
+bhai ye hai a = 100
+bhai ye hai b = 25
+bol bhai "a = " + a + ", b = " + b
+bol bhai "Sum: " + (a + b)
+bol bhai "Difference: " + (a - b)
+bol bhai "Product: " + (a * b)
+bol bhai "Quotient: " + (a / b)
+bol bhai "Power: " + (b ** 2)
+
+// ========== Loops ==========
+bol bhai "\n3. LOOPS WITH BREAK AND CONTINUE"
+bol bhai "Even numbers from 1-10:"
+ke liye bhai (bhai ye hai i = 1; i <= 10; i += 1) {
+  agar bhai (i % 2 != 0) {
+    continue
+  }
+  bol bhai i
+}
+
+bol bhai "Numbers until 5:"
+bhai ye hai count = 0
+jab tak bhai (true) {
+  count += 1
+  agar bhai (count > 5) {
+    break
+  }
+  bol bhai count
+}
+
+// ========== Functions ==========
+bol bhai "\n4. FUNCTIONS"
+
+function bhai calculateSum(x, y) {
+  return bhai x + y
+}
+
+function bhai factorial(n) {
+  agar bhai (n <= 1) {
+    return bhai 1
+  }
+  return bhai n * factorial(n - 1)
+}
+
+bol bhai "Sum(15, 25) = " + calculateSum(15, 25)
+bol bhai "Factorial(5) = " + factorial(5)
+
+// ========== Arrays ==========
+bol bhai "\n5. ARRAYS"
+bhai ye hai numbers = [5, 10, 15, 20, 25]
+bhai ye hai sum = 0
+
+ke liye bhai (bhai ye hai i = 0; i < 5; i += 1) {
+  sum += numbers[i]
+}
+
+bol bhai "Array: [5, 10, 15, 20, 25]"
+bol bhai "Sum: " + sum
+bol bhai "Average: " + (sum / 5)
+
+// ========== Structs ==========
+bol bhai "\n6. STRUCTS"
+
+struct bhai Point {
+  bhai ye hai x = 0
+  bhai ye hai y = 0
+}
+
+bhai ye hai p1 = new bhai Point(10, 20)
+bhai ye hai p2 = new bhai Point(30, 40)
+bol bhai "Point 1: (" + p1.x + ", " + p1.y + ")"
+bol bhai "Point 2: (" + p2.x + ", " + p2.y + ")"
+
+// ========== Classes ==========
+bol bhai "\n7. CLASSES AND OOP"
+
+class bhai Calculator {
+  static function bhai multiply(x, y) {
+    return bhai x * y
+  }
+  
+  static function bhai divide(x, y) {
+    agar bhai (y == 0) {
+      return bhai 0
+    }
+    return bhai x / y
+  }
+}
+
+bol bhai "10 * 5 = " + Calculator.multiply(10, 5)
+bol bhai "100 / 4 = " + Calculator.divide(100, 4)
+
+class bhai Person {
+  bhai ye hai name = ""
+  bhai ye hai age = 0
+  
+  function bhai constructor(n, a) {
+    this.name = n
+    this.age = a
+  }
+  
+  function bhai introduce() {
+    bol bhai "Hi, I'm " + this.name + ", age " + this.age
+  }
+}
+
+bhai ye hai person = new bhai Person("Raj", 25)
+person.introduce()
+
+// ========== File I/O ==========
+bol bhai "\n8. FILE I/O - Writing to temp.txt"
+
+file kholo ("temp.txt", "w") fh
+file likho (fh, "=== Numbers 10 to 50 ===\n")
+
+ke liye bhai (bhai ye hai num = 10; num <= 50; num += 1) {
+  file likho (fh, num + "\n")
+}
+
+file band karo (fh)
+bol bhai "Written numbers 10-50 to temp.txt"
+
+// Read back
+file kholo ("temp.txt", "r") readFh
+file padho (readFh) content
+bol bhai "First 100 chars from file:"
+bol bhai content
+
+file band karo (readFh)
+
+// ========== Bitwise Operations ==========
+bol bhai "\n9. BITWISE OPERATIONS"
+bhai ye hai x = 12
+bhai ye hai y = 10
+bol bhai "x = " + x + ", y = " + y
+bol bhai "x & y = " + (x & y)
+bol bhai "x | y = " + (x | y)
+bol bhai "x ^ y = " + (x ^ y)
+bol bhai "x << 1 = " + (x << 1)
+bol bhai "x >> 1 = " + (x >> 1)
+
+// ========== Comparison and Logical ==========
+bol bhai "\n10. COMPARISON AND LOGICAL"
+bhai ye hai p = 15
+bhai ye hai q = 20
+bol bhai "p = " + p + ", q = " + q
+bol bhai "p < q: " + (p < q)
+bol bhai "p == q: " + (p == q)
+bol bhai "p != q: " + (p != q)
+bol bhai "(p < q) && (q > 10): " + ((p < q) && (q > 10))
+bol bhai "(p > q) || (q < 30): " + ((p > q) || (q < 30))
+
+// ========== Compound Assignment ==========
+bol bhai "\n11. COMPOUND ASSIGNMENT OPERATORS"
+bhai ye hai val = 10
+bol bhai "Initial val = " + val
+
+val += 5
+bol bhai "After val += 5: " + val
+
+val *= 2
+bol bhai "After val *= 2: " + val
+
+val /= 3
+bol bhai "After val /= 3: " + val
+
+// ========== Nested Loops and Algorithm ==========
+bol bhai "\n12. ALGORITHM - Prime Numbers 1-30"
+ke liye bhai (bhai ye hai num = 2; num <= 30; num += 1) {
+  bhai ye hai isPrime = true
+  
+  ke liye bhai (bhai ye hai i = 2; i * i <= num; i += 1) {
+    agar bhai (num % i == 0) {
+      isPrime = false
+      break
+    }
+  }
+  
+  agar bhai (isPrime) {
+    bol bhai num
+  }
+}
+
+// ========== Complex Class Example ==========
+bol bhai "\n13. COMPLEX CLASS - BankAccount"
+
+class bhai BankAccount {
+  bhai ye hai balance = 0
+  bhai ye hai owner = ""
+  
+  function bhai constructor(name, initial) {
+    this.owner = name
+    this.balance = initial
+  }
+  
+  function bhai deposit(amount) {
+    this.balance += amount
+    bol bhai this.owner + " deposited Rs." + amount
+  }
+  
+  function bhai withdraw(amount) {
+    agar bhai (amount > this.balance) {
+      bol bhai "Insufficient funds!"
+      return bhai false
+    }
+    this.balance -= amount
+    bol bhai this.owner + " withdrew Rs." + amount
+    return bhai true
+  }
+  
+  function bhai getBalance() {
+    return bhai this.balance
+  }
+}
+
+bhai ye hai account = new bhai BankAccount("Priya", 5000)
+account.deposit(2000)
+account.withdraw(1500)
+bol bhai "Final balance: Rs." + account.getBalance()
+
+// ========== Matrix Operations ==========
+bol bhai "\n14. 2D ARRAY - Matrix"
+bhai ye hai matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+]
+
+bol bhai "3x3 Matrix:"
+ke liye bhai (bhai ye hai i = 0; i < 3; i += 1) {
+  bhai ye hai row = ""
+  ke liye bhai (bhai ye hai j = 0; j < 3; j += 1) {
+    row = row + matrix[i][j] + " "
+  }
+  bol bhai row
+}
+
+// Calculate diagonal sum
+bhai ye hai diagSum = 0
+ke liye bhai (bhai ye hai i = 0; i < 3; i += 1) {
+  diagSum += matrix[i][i]
+}
+bol bhai "Diagonal sum: " + diagSum
+
+// ========== Pointers (Simulated) ==========
+bol bhai "\n15. POINTERS"
+bhai ye hai original = 100
+bhai ye hai ptr = &original
+bhai ye hai deref = *ptr
+bol bhai "Original: " + original
+bol bhai "Dereferenced: " + deref
+
+// ========== Final Summary ==========
+bol bhai "\n========================================="
+bol bhai "DEMO COMPLETE!"
+bol bhai "Covered: Variables, Operators, Loops,"
+bol bhai "Functions, Arrays, Structs, Classes,"
+bol bhai "File I/O, Algorithms, and more!"
+bol bhai "========================================="
+

@@ -1,0 +1,100 @@
+// ==========================================
+// FILE I/O Operations
+// ==========================================
+
+bol bhai "=== Writing Numbers 10-50 to temp.txt ==="
+
+// Open file for writing
+file kholo ("temp.txt", "w") fileHandle
+
+// Write numbers 10 to 50
+ke liye bhai (bhai ye hai num = 10; num <= 50; num += 1) {
+  file likho (fileHandle, num + "\n")
+}
+
+// Close the file
+file band karo (fileHandle)
+bol bhai "Successfully wrote numbers 10-50 to temp.txt"
+
+bol bhai "\n=== Reading from temp.txt ==="
+
+// Open file for reading
+file kholo ("temp.txt", "r") readHandle
+
+// Read entire file content
+file padho (readHandle) content
+bol bhai "File contents:"
+bol bhai content
+
+// Close the file
+file band karo (readHandle)
+
+bol bhai "\n=== Appending to temp.txt ==="
+
+// Open file for appending
+file kholo ("temp.txt", "a") appendHandle
+
+// Append some text
+file likho (appendHandle, "\n--- Additional Data ---\n")
+file likho (appendHandle, "Sum of numbers: 1530\n")
+file likho (appendHandle, "Count: 41\n")
+
+// Close the file
+file band karo (appendHandle)
+bol bhai "Successfully appended data to temp.txt"
+
+bol bhai "\n=== Reading Updated File ==="
+
+// Read the updated file
+file kholo ("temp.txt", "r") readHandle2
+file padho (readHandle2) updatedContent
+bol bhai "Updated file contents:"
+bol bhai updatedContent
+file band karo (readHandle2)
+
+bol bhai "\n=== Writing Formatted Data ==="
+
+// Create a data file
+file kholo ("data.txt", "w") dataHandle
+
+file likho (dataHandle, "Name,Age,Score\n")
+file likho (dataHandle, "Raj,25,95\n")
+file likho (dataHandle, "Priya,22,87\n")
+file likho (dataHandle, "Amit,28,92\n")
+
+file band karo (dataHandle)
+bol bhai "Created data.txt with formatted data"
+
+bol bhai "\n=== Reading Formatted Data ==="
+file kholo ("data.txt", "r") dataReadHandle
+file padho (dataReadHandle) csvData
+bol bhai csvData
+file band karo (dataReadHandle)
+
+bol bhai "\n=== Creating a Log File ==="
+
+file kholo ("log.txt", "w") logHandle
+file likho (logHandle, "=== Program Log ===\n")
+file likho (logHandle, "Started: Program Execution\n")
+file likho (logHandle, "Status: Writing to log file\n")
+file likho (logHandle, "Info: All operations successful\n")
+file likho (logHandle, "Completed: Program Execution\n")
+file band karo (logHandle)
+
+bol bhai "Log file created successfully"
+
+bol bhai "\n=== Computing Sum and Writing Result ==="
+
+bhai ye hai sum = 0
+ke liye bhai (bhai ye hai i = 10; i <= 50; i += 1) {
+  sum += i
+}
+
+file kholo ("result.txt", "w") resultHandle
+file likho (resultHandle, "Sum of numbers from 10 to 50:\n")
+file likho (resultHandle, "Result = " + sum + "\n")
+file likho (resultHandle, "Formula: n(n+1)/2 where n=41, starting from 10\n")
+file band karo (resultHandle)
+
+bol bhai "Result written to result.txt"
+bol bhai "Sum of 10 to 50 = " + sum

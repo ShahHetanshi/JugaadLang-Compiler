@@ -1,0 +1,89 @@
+// ==========================================
+// LOOPS, BREAK, and CONTINUE Examples
+// ==========================================
+
+bol bhai "=== WHILE LOOP ==="
+bhai ye hai counter = 1
+jab tak bhai (counter <= 5) {
+  bol bhai "Counter: " + counter
+  counter += 1
+}
+
+bol bhai "\n=== FOR LOOP ==="
+ke liye bhai (bhai ye hai i = 1; i <= 5; i += 1) {
+  bol bhai "Iteration: " + i
+}
+
+bol bhai "\n=== BREAK Statement ==="
+ke liye bhai (bhai ye hai i = 1; i <= 10; i += 1) {
+  agar bhai (i == 6) {
+    bol bhai "Breaking at i = " + i
+    break
+  }
+  bol bhai "i = " + i
+}
+
+bol bhai "\n=== CONTINUE Statement ==="
+ke liye bhai (bhai ye hai i = 1; i <= 10; i += 1) {
+  agar bhai (i % 2 == 0) {
+    continue
+  }
+  bol bhai "Odd number: " + i
+}
+
+bol bhai "\n=== NESTED LOOPS with BREAK ==="
+ke liye bhai (bhai ye hai i = 1; i <= 3; i += 1) {
+  ke liye bhai (bhai ye hai j = 1; j <= 3; j += 1) {
+    agar bhai (j == 2) {
+      break
+    }
+    bol bhai "i=" + i + ", j=" + j
+  }
+}
+
+bol bhai "\n=== NESTED LOOPS with CONTINUE ==="
+ke liye bhai (bhai ye hai i = 1; i <= 3; i += 1) {
+  ke liye bhai (bhai ye hai j = 1; j <= 3; j += 1) {
+    agar bhai (j == 2) {
+      continue
+    }
+    bol bhai "i=" + i + ", j=" + j
+  }
+}
+
+bol bhai "\n=== Finding Prime Numbers (1-20) ==="
+ke liye bhai (bhai ye hai num = 2; num <= 20; num += 1) {
+  bhai ye hai isPrime = true
+  
+  ke liye bhai (bhai ye hai i = 2; i * i <= num; i += 1) {
+    agar bhai (num % i == 0) {
+      isPrime = false
+      break
+    }
+  }
+  
+  agar bhai (isPrime) {
+    bol bhai num + " is prime"
+  }
+}
+
+bol bhai "\n=== WHILE Loop with BREAK ==="
+bhai ye hai count = 0
+jab tak bhai (true) {
+  count += 1
+  agar bhai (count > 5) {
+    bol bhai "Breaking infinite loop at count = " + count
+    break
+  }
+  bol bhai "Count: " + count
+}
+
+bol bhai "\n=== WHILE Loop with CONTINUE ==="
+bhai ye hai n = 0
+jab tak bhai (n < 10) {
+  n += 1
+  agar bhai (n % 2 == 0) {
+    continue
+  }
+  bol bhai "Odd: " + n
+}

@@ -1,0 +1,123 @@
+// ==========================================
+// ALL OPERATORS Example
+// ==========================================
+
+bol bhai "=== ARITHMETIC OPERATORS ==="
+bhai ye hai a = 10
+bhai ye hai b = 3
+
+bol bhai "a = " + a + ", b = " + b
+bol bhai "Addition (a + b): " + (a + b)
+bol bhai "Subtraction (a - b): " + (a - b)
+bol bhai "Multiplication (a * b): " + (a * b)
+bol bhai "Division (a / b): " + (a / b)
+bol bhai "Modulo (a % b): " + (a % b)
+bol bhai "Exponentiation (a ** b): " + (a ** b)
+
+bol bhai "\n=== ASSIGNMENT OPERATORS ==="
+bhai ye hai x = 10
+bol bhai "Initial x = " + x
+
+x += 5
+bol bhai "After x += 5: " + x
+
+x -= 3
+bol bhai "After x -= 3: " + x
+
+x *= 2
+bol bhai "After x *= 2: " + x
+
+x /= 4
+bol bhai "After x /= 4: " + x
+
+x %= 3
+bol bhai "After x %= 3: " + x
+
+x **= 3
+bol bhai "After x **= 3: " + x
+
+bol bhai "\n=== COMPARISON OPERATORS ==="
+bhai ye hai p = 10
+bhai ye hai q = 20
+
+bol bhai "p = " + p + ", q = " + q
+bol bhai "p > q: " + (p > q)
+bol bhai "p < q: " + (p < q)
+bol bhai "p >= q: " + (p >= q)
+bol bhai "p <= q: " + (p <= q)
+bol bhai "p == q: " + (p == q)
+bol bhai "p != q: " + (p != q)
+
+bol bhai "\n=== LOGICAL OPERATORS ==="
+bhai ye hai t = true
+bhai ye hai f = false
+
+bol bhai "t = " + t + ", f = " + f
+bol bhai "t && t: " + (t && t)
+bol bhai "t && f: " + (t && f)
+bol bhai "t || f: " + (t || f)
+bol bhai "f || f: " + (f || f)
+bol bhai "!t: " + (!t)
+bol bhai "!f: " + (!f)
+
+bol bhai "\n=== BITWISE OPERATORS ==="
+bhai ye hai m = 12
+bhai ye hai n = 10
+
+bol bhai "m = " + m + " (binary: 1100)"
+bol bhai "n = " + n + " (binary: 1010)"
+bol bhai "m & n (AND): " + (m & n)
+bol bhai "m | n (OR): " + (m | n)
+bol bhai "m ^ n (XOR): " + (m ^ n)
+bol bhai "~m (NOT): " + (~m)
+bol bhai "m << 2 (Left Shift): " + (m << 2)
+bol bhai "m >> 2 (Right Shift): " + (m >> 2)
+
+bol bhai "\n=== BITWISE ASSIGNMENT OPERATORS ==="
+bhai ye hai val = 12
+bol bhai "Initial val = " + val
+
+val &= 10
+bol bhai "After val &= 10: " + val
+
+val = 12
+val |= 3
+bol bhai "After val |= 3: " + val
+
+val = 12
+val ^= 6
+bol bhai "After val ^= 6: " + val
+
+val = 8
+val <<= 2
+bol bhai "After val <<= 2: " + val
+
+val = 32
+val >>= 2
+bol bhai "After val >>= 2: " + val
+
+bol bhai "\n=== UNARY OPERATORS ==="
+bhai ye hai num = 42
+bol bhai "num = " + num
+bol bhai "-num: " + (-num)
+bol bhai "!false: " + (!false)
+bol bhai "~num: " + (~num)
+
+bol bhai "\n=== STRING CONCATENATION ==="
+bhai ye hai str1 = "Hello"
+bhai ye hai str2 = "World"
+bol bhai str1 + " " + str2
+
+bhai ye hai msg = "Answer: "
+bhai ye hai answer = 42
+bol bhai msg + answer
+
+bol bhai "\n=== COMPLEX EXPRESSIONS ==="
+bhai ye hai result1 = (5 + 3) * 2 - 4 / 2
+bol bhai "(5 + 3) * 2 - 4 / 2 = " + result1
+
+bhai ye hai result2 = 2 ** 3 + 5 * 4 - 10 / 2
+bol bhai "2 ** 3 + 5 * 4 - 10 / 2 = " + result2
+
+bhai ye hai result3 = (10 > 5) && (20 < 30) || false
+bol bhai "(10 > 5) && (20 < 30) || false = " + result3

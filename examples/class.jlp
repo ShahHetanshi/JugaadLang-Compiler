@@ -1,0 +1,240 @@
+// ==========================================
+// CLASSES and OOP Examples
+// ==========================================
+
+bol bhai "=== Basic Class with Constructor ==="
+
+class bhai Person {
+  bhai ye hai name = "Unknown"
+  bhai ye hai age = 0
+  
+  function bhai constructor(n, a) {
+    this.name = n
+    this.age = a
+  }
+  
+  function bhai greet() {
+    bol bhai "Hello, I am " + this.name
+    bol bhai "I am " + this.age + " years old"
+  }
+  
+  function bhai birthday() {
+    this.age += 1
+    bol bhai this.name + " is now " + this.age
+  }
+}
+
+bhai ye hai person1 = new bhai Person("Raj", 25)
+person1.greet()
+person1.birthday()
+
+bol bhai "\n=== Class with Multiple Methods ==="
+
+class bhai BankAccount {
+  bhai ye hai accountNumber = 0
+  bhai ye hai balance = 0
+  bhai ye hai owner = ""
+  
+  function bhai constructor(accNum, name, initialBalance) {
+    this.accountNumber = accNum
+    this.owner = name
+    this.balance = initialBalance
+  }
+  
+  function bhai deposit(amount) {
+    this.balance += amount
+    bol bhai "Deposited: " + amount
+    bol bhai "New Balance: " + this.balance
+  }
+  
+  function bhai withdraw(amount) {
+    agar bhai (amount > this.balance) {
+      bol bhai "Insufficient funds!"
+      return bhai false
+    }
+    this.balance -= amount
+    bol bhai "Withdrawn: " + amount
+    bol bhai "New Balance: " + this.balance
+    return bhai true
+  }
+  
+  function bhai getBalance() {
+    return bhai this.balance
+  }
+  
+  function bhai displayInfo() {
+    bol bhai "Account Number: " + this.accountNumber
+    bol bhai "Owner: " + this.owner
+    bol bhai "Balance: " + this.balance
+  }
+}
+
+bhai ye hai account = new bhai BankAccount(12345, "Priya", 1000)
+account.displayInfo()
+account.deposit(500)
+account.withdraw(300)
+account.withdraw(2000)
+
+bol bhai "\n=== Class Inheritance ==="
+
+class bhai Animal {
+  bhai ye hai name = "Animal"
+  bhai ye hai species = "Unknown"
+  
+  function bhai constructor(n, s) {
+    this.name = n
+    this.species = s
+  }
+  
+  function bhai speak() {
+    bol bhai this.name + " makes a sound"
+  }
+  
+  function bhai info() {
+    bol bhai "Name: " + this.name
+    bol bhai "Species: " + this.species
+  }
+}
+
+class bhai Dog extends Animal {
+  bhai ye hai breed = "Unknown"
+  
+  function bhai constructor(n, b) {
+    this.name = n
+    this.species = "Canis familiaris"
+    this.breed = b
+  }
+  
+  function bhai speak() {
+    bol bhai this.name + " barks: Woof! Woof!"
+  }
+  
+  function bhai wagTail() {
+    bol bhai this.name + " wags tail happily"
+  }
+  
+  function bhai info() {
+    bol bhai "Name: " + this.name
+    bol bhai "Species: " + this.species
+    bol bhai "Breed: " + this.breed
+  }
+}
+
+bhai ye hai dog = new bhai Dog("Buddy", "Golden Retriever")
+dog.speak()
+dog.wagTail()
+dog.info()
+
+bol bhai "\n=== Class with Static Methods ==="
+
+class bhai MathHelper {
+  static function bhai add(a, b) {
+    return bhai a + b
+  }
+  
+  static function bhai subtract(a, b) {
+    return bhai a - b
+  }
+  
+  static function bhai multiply(a, b) {
+    return bhai a * b
+  }
+  
+  static function bhai divide(a, b) {
+    agar bhai (b == 0) {
+      bol bhai "Error: Division by zero"
+      return bhai null
+    }
+    return bhai a / b
+  }
+  
+  static function bhai power(base, exp) {
+    return bhai base ** exp
+  }
+}
+
+bol bhai "10 + 5 = " + MathHelper.add(10, 5)
+bol bhai "10 - 5 = " + MathHelper.subtract(10, 5)
+bol bhai "10 * 5 = " + MathHelper.multiply(10, 5)
+bol bhai "10 / 5 = " + MathHelper.divide(10, 5)
+bol bhai "2 ^ 8 = " + MathHelper.power(2, 8)
+
+bol bhai "\n=== Complex Class Example: Student Management ==="
+
+class bhai Student {
+  bhai ye hai name = ""
+  bhai ye hai rollNumber = 0
+  bhai ye hai marks = [0, 0, 0]
+  
+  function bhai constructor(n, roll) {
+    this.name = n
+    this.rollNumber = roll
+    this.marks = [0, 0, 0]
+  }
+  
+  function bhai setMarks(sub1, sub2, sub3) {
+    this.marks[0] = sub1
+    this.marks[1] = sub2
+    this.marks[2] = sub3
+  }
+  
+  function bhai calculateTotal() {
+    return bhai this.marks[0] + this.marks[1] + this.marks[2]
+  }
+  
+  function bhai calculateAverage() {
+    bhai ye hai total = this.calculateTotal()
+    return bhai total / 3
+  }
+  
+  function bhai displayReport() {
+    bol bhai "=== Student Report Card ==="
+    bol bhai "Name: " + this.name
+    bol bhai "Roll Number: " + this.rollNumber
+    bol bhai "Subject 1: " + this.marks[0]
+    bol bhai "Subject 2: " + this.marks[1]
+    bol bhai "Subject 3: " + this.marks[2]
+    bol bhai "Total: " + this.calculateTotal()
+    bol bhai "Average: " + this.calculateAverage()
+  }
+}
+
+bhai ye hai student1 = new bhai Student("Alice", 101)
+student1.setMarks(95, 87, 92)
+student1.displayReport()
+
+bhai ye hai student2 = new bhai Student("Bob", 102)
+student2.setMarks(78, 82, 88)
+student2.displayReport()
+
+bol bhai "\n=== Class with Property Modification ==="
+
+class bhai Counter {
+  bhai ye hai count = 0
+  
+  function bhai increment() {
+    this.count += 1
+  }
+  
+  function bhai decrement() {
+    this.count -= 1
+  }
+  
+  function bhai reset() {
+    this.count = 0
+  }
+  
+  function bhai getValue() {
+    return bhai this.count
+  }
+}
+
+bhai ye hai counter = new bhai Counter()
+counter.increment()
+counter.increment()
+counter.increment()
+bol bhai "Counter value: " + counter.getValue()
+counter.decrement()
+bol bhai "After decrement: " + counter.getValue()
+counter.reset()
+bol bhai "After reset: " + counter.getValue()

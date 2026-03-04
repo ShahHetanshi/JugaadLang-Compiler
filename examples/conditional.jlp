@@ -1,0 +1,209 @@
+// ==========================================
+// CONDITIONAL STATEMENTS (IF-ELSE)
+// ==========================================
+
+bol bhai "=== Basic IF Statement ==="
+
+bhai ye hai age = 18
+agar bhai (age >= 18) {
+  bol bhai "You are an adult"
+}
+
+bol bhai "\n=== IF-ELSE Statement ==="
+
+bhai ye hai temperature = 25
+agar bhai (temperature > 30) {
+  bol bhai "It's hot outside"
+} nahi to bhai {
+  bol bhai "Weather is pleasant"
+}
+
+bol bhai "\n=== Nested IF-ELSE ==="
+
+bhai ye hai marks = 85
+
+agar bhai (marks >= 90) {
+  bol bhai "Grade: A+"
+} nahi to bhai {
+  agar bhai (marks >= 80) {
+    bol bhai "Grade: A"
+  } nahi to bhai {
+    agar bhai (marks >= 70) {
+      bol bhai "Grade: B"
+    } nahi to bhai {
+      agar bhai (marks >= 60) {
+        bol bhai "Grade: C"
+      } nahi to bhai {
+        bol bhai "Grade: F"
+      }
+    }
+  }
+}
+
+bol bhai "\n=== Multiple Conditions with AND ==="
+
+bhai ye hai username = "admin"
+bhai ye hai password = "1234"
+
+agar bhai (username == "admin" && password == "1234") {
+  bol bhai "Login successful!"
+} nahi to bhai {
+  bol bhai "Invalid credentials"
+}
+
+bol bhai "\n=== Multiple Conditions with OR ==="
+
+bhai ye hai day = "Sunday"
+
+agar bhai (day == "Saturday" || day == "Sunday") {
+  bol bhai "It's a weekend!"
+} nahi to bhai {
+  bol bhai "It's a weekday"
+}
+
+bol bhai "\n=== Even or Odd ==="
+
+bhai ye hai number = 17
+
+agar bhai (number % 2 == 0) {
+  bol bhai number + " is even"
+} nahi to bhai {
+  bol bhai number + " is odd"
+}
+
+bol bhai "\n=== Positive, Negative, or Zero ==="
+
+bhai ye hai value = -5
+
+agar bhai (value > 0) {
+  bol bhai value + " is positive"
+} nahi to bhai {
+  agar bhai (value < 0) {
+    bol bhai value + " is negative"
+  } nahi to bhai {
+    bol bhai "Value is zero"
+  }
+}
+
+bol bhai "\n=== Leap Year Check ==="
+
+bhai ye hai year = 2024
+
+agar bhai (year % 4 == 0) {
+  agar bhai (year % 100 == 0) {
+    agar bhai (year % 400 == 0) {
+      bol bhai year + " is a leap year"
+    } nahi to bhai {
+      bol bhai year + " is not a leap year"
+    }
+  } nahi to bhai {
+    bol bhai year + " is a leap year"
+  }
+} nahi to bhai {
+  bol bhai year + " is not a leap year"
+}
+
+bol bhai "\n=== Finding Maximum of Three Numbers ==="
+
+bhai ye hai a = 25
+bhai ye hai b = 45
+bhai ye hai c = 30
+
+agar bhai (a >= b && a >= c) {
+  bol bhai "Maximum is: " + a
+} nahi to bhai {
+  agar bhai (b >= a && b >= c) {
+    bol bhai "Maximum is: " + b
+  } nahi to bhai {
+    bol bhai "Maximum is: " + c
+  }
+}
+
+bol bhai "\n=== Voting Eligibility ==="
+
+bhai ye hai personAge = 20
+bhai ye hai isCitizen = true
+
+agar bhai (personAge >= 18 && isCitizen == true) {
+  bol bhai "Eligible to vote"
+} nahi to bhai {
+  bol bhai "Not eligible to vote"
+}
+
+bol bhai "\n=== Triangle Validity Check ==="
+
+bhai ye hai side1 = 3
+bhai ye hai side2 = 4
+bhai ye hai side3 = 5
+
+agar bhai (side1 + side2 > side3 && side2 + side3 > side1 && side1 + side3 > side2) {
+  bol bhai "Valid triangle"
+} nahi to bhai {
+  bol bhai "Invalid triangle"
+}
+
+bol bhai "\n=== Character Type Check ==="
+
+bhai ye hai char = 65
+
+agar bhai (char >= 65 && char <= 90) {
+  bol bhai "Uppercase letter"
+} nahi to bhai {
+  agar bhai (char >= 97 && char <= 122) {
+    bol bhai "Lowercase letter"
+  } nahi to bhai {
+    agar bhai (char >= 48 && char <= 57) {
+      bol bhai "Digit"
+    } nahi to bhai {
+      bol bhai "Special character"
+    }
+  }
+}
+
+bol bhai "\n=== Discount Calculation ==="
+
+bhai ye hai purchaseAmount = 1500
+
+agar bhai (purchaseAmount >= 2000) {
+  bhai ye hai discount = purchaseAmount * 0.2
+  bol bhai "20% discount applied: Rs." + discount
+} nahi to bhai {
+  agar bhai (purchaseAmount >= 1000) {
+    bhai ye hai discount = purchaseAmount * 0.1
+    bol bhai "10% discount applied: Rs." + discount
+  } nahi to bhai {
+    bol bhai "No discount"
+  }
+}
+
+bol bhai "\n=== Password Strength Check ==="
+
+bhai ye hai passLength = 8
+
+agar bhai (passLength >= 12) {
+  bol bhai "Strong password"
+} nahi to bhai {
+  agar bhai (passLength >= 8) {
+    bol bhai "Medium password"
+  } nahi to bhai {
+    bol bhai "Weak password"
+  }
+}
+
+bol bhai "\n=== BMI Category ==="
+
+bhai ye hai bmi = 24.5
+
+agar bhai (bmi < 18.5) {
+  bol bhai "Underweight"
+} nahi to bhai {
+  agar bhai (bmi < 25) {
+    bol bhai "Normal weight"
+  } nahi to bhai {
+    agar bhai (bmi < 30) {
+      bol bhai "Overweight"
+    } nahi to bhai {
+      bol bhai "Obese"
+    }
+  }
+}

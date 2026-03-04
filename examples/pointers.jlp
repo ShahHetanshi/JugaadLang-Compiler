@@ -1,0 +1,83 @@
+// ==========================================
+// POINTERS (Simulated) Examples
+// ==========================================
+
+bol bhai "=== Basic Pointer Operations ==="
+
+bhai ye hai x = 42
+bol bhai "Original value of x: " + x
+
+// Address-of operator (&)
+bhai ye hai ptr = &x
+bol bhai "Pointer created (address-of x)"
+
+// Dereference operator (*)
+bhai ye hai value = *ptr
+bol bhai "Dereferenced value: " + value
+
+bol bhai "\n=== Pointer with Different Data Types ==="
+
+bhai ye hai num = 100
+bhai ye hai ptrNum = &num
+bol bhai "num = " + num
+bol bhai "Dereferenced ptrNum = " + (*ptrNum)
+
+bhai ye hai name = "Alice"
+bhai ye hai ptrName = &name
+bol bhai "name = " + name
+bol bhai "Dereferenced ptrName = " + (*ptrName)
+
+bol bhai "\n=== Multiple Pointers ==="
+
+bhai ye hai a = 10
+bhai ye hai b = 20
+bhai ye hai c = 30
+
+bhai ye hai ptrA = &a
+bhai ye hai ptrB = &b
+bhai ye hai ptrC = &c
+
+bol bhai "Values through pointers:"
+bol bhai "a = " + (*ptrA)
+bol bhai "b = " + (*ptrB)
+bol bhai "c = " + (*ptrC)
+
+bol bhai "\n=== Pointer Arithmetic Simulation ==="
+
+bhai ye hai val1 = 5
+bhai ye hai val2 = 10
+bhai ye hai val3 = 15
+
+bhai ye hai p1 = &val1
+bhai ye hai p2 = &val2
+bhai ye hai p3 = &val3
+
+bhai ye hai sum = (*p1) + (*p2) + (*p3)
+bol bhai "Sum through pointers: " + sum
+
+bol bhai "\n=== Swapping Values Using Pointers Concept ==="
+
+bhai ye hai var1 = 100
+bhai ye hai var2 = 200
+
+bol bhai "Before swap: var1 = " + var1 + ", var2 = " + var2
+
+bhai ye hai pVar1 = &var1
+bhai ye hai pVar2 = &var2
+
+bhai ye hai temp = *pVar1
+var1 = *pVar2
+var2 = temp
+
+bol bhai "After swap: var1 = " + var1 + ", var2 = " + var2
+
+bol bhai "\n=== Pointer to Calculate ==="
+
+bhai ye hai base = 5
+bhai ye hai height = 10
+
+bhai ye hai ptrBase = &base
+bhai ye hai ptrHeight = &height
+
+bhai ye hai area = (*ptrBase) * (*ptrHeight) / 2
+bol bhai "Triangle area (using pointers): " + area

@@ -1,0 +1,15 @@
+{
+  "name": "jugaad_langpp",
+  "version": "1.0.0",
+  "description": "Jugaad Lang - Desi Programming Language",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["jugaad", "programming", "desi"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
